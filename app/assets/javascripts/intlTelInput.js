@@ -9,9 +9,9 @@
         .attr('name', element.attr('name'))
         .val(element.val())
         .insertAfter(element);
+      element.intlTelInput(element.data('intl-tel-input') || {});
 
       element.removeAttr('name')
-        .intlTelInput(element.data('intl-tel-input') || {})
         .closest('form').submit(function () {
           hidden.val(element.intlTelInput('getNumber'));
         });
