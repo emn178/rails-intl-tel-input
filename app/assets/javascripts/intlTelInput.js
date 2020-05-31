@@ -1,10 +1,14 @@
-//= require intlTelInput/intlTelInput
+//= require intlTelInput/intlTelInput-jquery
 //= require intlTelInput/utils
 
 (function ($) {
-  $(document).on('ready page:load', function () {
+  $(document).on('ready page:load turbolinks:load', function () {
     $('[data-intl-tel-input]').each(function () {
       var element = $(this);
+      if (element.attr('data-intl-tel-input-init')) {
+        return;
+      }
+      element.attr('data-intl-tel-input-init', 'true');
       var hidden = $('<input type="hidden"/>')
         .attr('name', element.attr('name'))
         .val(element.val())
